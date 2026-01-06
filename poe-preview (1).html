@@ -1,0 +1,819 @@
+<!DOCTYPE html><html lang="en"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoScale Growth | Digital Marketing for Fitness Coaches</title>
+    <!-- Import Google Fonts for Professional Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary: #0056b3;       /* Deep Trustworthy Blue */
+            --primary-dark: #004494;
+            --secondary: #0ea5e9;     /* Modern Sky Blue */
+            --accent: #f97316;        /* Energetic Orange for CTAs */
+            --text-dark: #1e293b;
+            --text-gray: #64748b;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-white);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-dark);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 { font-family: 'Playfair Display', serif; } /* Serif for trust/elegance */
+        
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: white;
+            border: 2px solid var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #ea580c;
+            border-color: #ea580c;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center { text-align: center; }
+        .text-primary { color: var(--primary); }
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+
+        /* --- HEADER --- */
+        header {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-image img {
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* --- HOW IT WORKS (Process) --- */
+        .process {
+            background: var(--bg-white);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .process-card {
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: 0.3s;
+        }
+
+        .process-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .step-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #e2e8f0;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* --- SERVICES --- */
+        .services {
+            background: var(--bg-light);
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: #eff6ff;
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        /* --- BENEFITS (Why Fitness Coaches?) --- */
+        .benefits {
+            background: var(--primary);
+            color: white;
+        }
+
+        .benefits h2, .benefits p {
+            color: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .benefit-item svg {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            stroke: var(--secondary);
+        }
+
+        /* --- CASE STUDIES --- */
+        .case-studies {
+            background: var(--bg-white);
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .case-card {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .case-img {
+            height: 200px;
+            background-color: #cbd5e1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .case-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .case-content {
+            padding: 25px;
+        }
+
+        .stat-highlight {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* --- ABOUT --- */
+        .about {
+            background: var(--bg-light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- CONTACT --- */
+        .contact {
+            background: var(--bg-white);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+        }
+
+        .contact-info {
+            background: var(--primary);
+            color: white;
+            padding: 60px;
+        }
+
+        .contact-info h3 { color: white; margin-bottom: 1.5rem; }
+        .contact-info p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; }
+
+        .contact-form-container {
+            padding: 60px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-gray);
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .hero-content, .about-content, .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .hero-image, .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Simplified mobile handling */
+            .mobile-menu-btn { display: block; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .contact-info, .contact-form-container { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+                AutoScale Growth
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#process">How It Works</a></li>
+                    <li><a href="#results">Results</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact" class="btn btn-primary" style="padding: 10px 20px;">Book a Call</a></li>
+                </ul>
+                <button class="mobile-menu-btn">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Fill Your Coaching Schedule With Qualified Leads</h1>
+                <p>We build automated marketing systems that help fitness coaches generate consistent inquiries and convert them into paying clients without manual follow-up.</p>
+                <div style="display: flex; gap: 15px;">
+                    <a href="#contact" class="btn btn-primary">Book a Free Strategy Call</a>
+                    <a href="#results" class="btn" style="border: 2px solid var(--text-dark); background: transparent;">View Case Studies</a>
+                </div>
+                <div style="margin-top: 40px; display: flex; align-items: center; gap: 20px; color: var(--text-gray); font-size: 0.9rem;">
+                    <span>✅ Trusted by 50+ Coaches</span>
+                    <span>✅ ROI Focused</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://picsum.photos/seed/marketing/600/400" alt="Digital Marketing Dashboard">
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="section-padding process">
+        <div class="container">
+            <div class="section-header">
+                <h2>How We Help You Scale</h2>
+                <p>We don't just run ads. We build a complete acquisition engine that works while you train your clients.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-card">
+                    <span class="step-number">01</span>
+                    <h3>Attract</h3>
+                    <p>We deploy targeted ad campaigns on Meta and Google to put your offer in front of people actively looking for a solution.</p>
+                </div>
+                <div class="process-card">
+                    <span class="step-number">02</span>
+                    <h3>Nurture</h3>
+                    <p>Leads enter an automated email and SMS sequence that builds trust, educates them on your method, and primes them to buy.</p>
+                </div>
+                <div class="process-card">
+                    <span class="step-number">03</span>
+                    <h3>Convert</h3>
+                    <p>We funnel warm leads directly to your calendar or sales team, ensuring you only talk to qualified prospects ready to invest.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Comprehensive digital marketing solutions designed for high-ticket fitness businesses.</p>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    </div>
+                    <h3>Sales Funnels</h3>
+                    <p>High-converting landing pages and funnels designed specifically for fitness offers to capture leads and drive sales.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                    </div>
+                    <h3>CRM &amp; Automation</h3>
+                    <p>Setup of GoHighLevel or HubSpot to automate follow-ups, appointment reminders, and client onboarding.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <h3>Paid Advertising</h3>
+                    <p>Expert management of Facebook, Instagram, and Google Ads to lower acquisition costs and increase lead volume.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section-padding benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Fitness Coaches Choose Us</h2>
+                <p style="color: rgba(255,255,255,0.8);">Stop chasing clients. Let them come to you.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <div>
+                        <h3>More Qualified Leads</h3>
+                        <p>We filter out the tire-kickers so you only spend time with prospects ready to sign up.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <div>
+                        <h3>Save 10+ Hours/Week</h3>
+                        <p>Automate your manual DMs and follow-ups. Focus on coaching, not admin work.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    <div>
+                        <h3>Predictable Revenue</h3>
+                        <p>Turn your marketing into a predictable machine that scales with your ambition.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies / Results -->
+    <section id="results" class="section-padding case-studies">
+        <div class="container">
+            <div class="section-header">
+                <h2>Proven Results</h2>
+                <p>Real numbers from real fitness businesses we've partnered with.</p>
+            </div>
+            <div class="case-grid">
+                <!-- Case Study 1 -->
+                <div class="case-card">
+                    <div class="case-img">
+                        <img src="https://picsum.photos/seed/gym/500/300" alt="Client 1">
+                    </div>
+                    <div class="case-content">
+                        <span class="stat-highlight">+280%</span>
+                        <h4>Lead Increase in 90 Days</h4>
+                        <p class="mb-1"><strong>Client:</strong> Online Nutrition Coach</p>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Implemented a quiz funnel and Meta ads strategy, resulting in a tripling of booked discovery calls.</p>
+                    </div>
+                </div>
+                <!-- Case Study 2 -->
+                <div class="case-card">
+                    <div class="case-img">
+                        <img src="https://picsum.photos/seed/yoga/500/300" alt="Client 2">
+                    </div>
+                    <div class="case-content">
+                        <span class="stat-highlight">$45k</span>
+                        <h4>Generated in Month 1</h4>
+                        <p class="mb-1"><strong>Client:</strong> Boutique Pilates Studio</p>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Launched a local offer campaign with automated SMS follow-up to drive trial signups.</p>
+                    </div>
+                </div>
+                <!-- Case Study 3 -->
+                <div class="case-card">
+                    <div class="case-img">
+                        <img src="https://picsum.photos/seed/fitness/500/300" alt="Client 3">
+                    </div>
+                    <div class="case-content">
+                        <span class="stat-highlight">15 hrs/wk</span>
+                        <h4>Saved on Admin Tasks</h4>
+                        <p class="mb-1"><strong>Client:</strong> High-Performance Trainer</p>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Migrated entire lead management to a CRM automation system, eliminating manual data entry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding about">
+        <div class="container about-content">
+            <div class="about-image">
+                <img src="https://picsum.photos/seed/person/600/600" alt="Founder" style="border-radius: var(--radius); box-shadow: var(--shadow-md);">
+            </div>
+            <div class="about-text">
+                <h2>Meet Your Growth Partner</h2>
+                <p class="mb-2">Hi, I'm the founder of AutoScale Growth. After years in the digital marketing space, I realized that fitness coaches were struggling with the same problem: they were great at coaching, but terrible at marketing.</p>
+                <p class="mb-2">I created this agency to bridge that gap. We don't just "do marketing"—we build the systems that allow you to step away from the "feast or famine" cycle and build a sustainable, scalable business.</p>
+                <p><strong>My Mission:</strong> To help you reclaim your time while doubling your revenue.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Book a Call -->
+    <section id="contact" class="section-padding contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ready to Scale?</h2>
+                <p>Book a free 15-minute discovery call to see if we're a good fit.</p>
+            </div>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Fill out the form or book directly via our calendar link below.</p>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <strong>Email:</strong><br>
+                        hello@autoscalegrowth.com
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <strong>Calendar Placeholder:</strong><br>
+                        <a href="#" style="text-decoration: underline;">Click here to view available time slots</a>
+                    </div>
+
+                    <!-- Embedded Calendar Placeholder UI -->
+                    <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: var(--radius);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <span>Tomorrow</span>
+                            <span>Oct 24</span>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn" style="background: white; color: var(--primary); padding: 8px 12px; font-size: 0.8rem;">10:00 AM</button>
+                            <button class="btn" style="background: white; color: var(--primary); padding: 8px 12px; font-size: 0.8rem;">02:00 PM</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="John Doe" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="john@example.com" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="website">Website URL (Optional)</label>
+                            <input type="url" id="website" class="form-control" placeholder="https://yourfitness.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">What is your biggest challenge right now?</label>
+                            <textarea id="message" rows="4" class="form-control" placeholder="I need more leads..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="color: white; margin-bottom: 20px; display: inline-block;">AutoScale Growth</a>
+                    <p style="color: var(--text-gray); font-size: 0.9rem;">Helping fitness coaches scale their revenue through automated marketing systems.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#results">Case Studies</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Sales Funnels</a></li>
+                        <li><a href="#">Paid Ads</a></li>
+                        <li><a href="#">CRM Automation</a></li>
+                        <li><a href="#">Email Marketing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2023 AutoScale Growth. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form submission handler (prevent refresh for demo)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const originalText = btn.textContent;
+            
+            btn.textContent = "Message Sent!";
+            btn.style.backgroundColor = "#10b981"; // Green
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.backgroundColor = "";
+                this.reset();
+            }, 3000);
+        });
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileBtn.addEventListener('click', () => {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '80px';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'white';
+                navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+
+
+</body></html>
